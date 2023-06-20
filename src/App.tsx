@@ -1,12 +1,26 @@
-const App = () => {
-  return (
-    <>
-      <h1>Vite + React</h1>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+import { Button, ConfigProvider, theme } from "antd";
+import React from "react";
+import ErrorBoundary from "./components/ErrorBoundary";
+import BaseLayout from "./layout/BaseLayout";
 
-export default App
+const App: React.FC = () => {
+  return (
+    <ErrorBoundary fallback={<div>Some problem!</div>}>
+      <ConfigProvider
+        theme={{
+          algorithm: theme.defaultAlgorithm,
+        }}
+      >
+        <BaseLayout>
+          <h1>Vite + React</h1>
+
+          <p>Click on the Vite and React logos to learn more</p>
+
+          <Button>Hello im Button</Button>
+        </BaseLayout>
+      </ConfigProvider>
+    </ErrorBoundary>
+  );
+};
+
+export default App;
